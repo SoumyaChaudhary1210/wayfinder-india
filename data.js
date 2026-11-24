@@ -4,26 +4,13 @@ const destinations = [
     name: "Manali",
     state: "Himachal Pradesh",
     region: "North",
+    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=80",
     weather: ["Cold", "Snowy", "Cool and misty"],
     bestTime: "Oct to Feb and Mar to Jun",
     summary: "Snow near Solang Valley and Atal Tunnel in winter, crisp pine-scented air the rest of the year.",
     hotels: [
-      {
-        id: "manali-stay-1",
-        name: "Snow Peak Retreat",
-        area: "Mall Road",
-        rating: 4,
-        pricePerNight: 3500,
-        tags: ["Restaurant", "Mountain view"]
-      },
-      {
-        id: "manali-stay-2",
-        name: "Himalayan Pine Resort",
-        area: "Old Manali",
-        rating: 5,
-        pricePerNight: 7800,
-        tags: ["Spa", "Mountain view", "Restaurant"]
-      }
+      { id: "manali-stay-1", name: "Snow Peak Retreat", area: "Mall Road", rating: 4, pricePerNight: 3500, tags: ["Restaurant", "Mountain view"] },
+      { id: "manali-stay-2", name: "Himalayan Pine Resort", area: "Old Manali", rating: 5, pricePerNight: 7800, tags: ["Spa", "Mountain view", "Restaurant"] }
     ],
     transport: [
       { mode: "Bus", route: "Delhi to Manali Volvo", fareRange: "₹1,100–2,200", duration: "12–14h" },
@@ -35,34 +22,14 @@ const destinations = [
     name: "Gangtok",
     state: "Sikkim",
     region: "Northeast",
+    image: "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=900&q=80",
     weather: ["Cool and misty", "Cold", "Snowy"],
     bestTime: "Mar to May and Oct to Dec",
     summary: "Cool all year, with snow at Tsomgo Lake and Nathula Pass close by.",
     hotels: [
-      {
-        id: "hotel-tibet",
-        name: "Hotel Tibet",
-        area: "Paljor Stadium Road",
-        rating: 4,
-        pricePerNight: 4000,
-        tags: ["Restaurant", "Mountain view"]
-      },
-      {
-        id: "royal-plaza",
-        name: "The Royal Plaza",
-        area: "MG Marg",
-        rating: 4,
-        pricePerNight: 6500,
-        tags: ["Restaurant", "Central location", "Spa"]
-      },
-      {
-        id: "mayfair-spa",
-        name: "Mayfair Spa Resort & Casino",
-        area: "Ranipool",
-        rating: 5,
-        pricePerNight: 11000,
-        tags: ["Spa", "Casino", "Pool", "Mountain view"]
-      }
+      { id: "hotel-tibet", name: "Hotel Tibet", area: "Paljor Stadium Road", rating: 4, pricePerNight: 4000, tags: ["Restaurant", "Mountain view"] },
+      { id: "royal-plaza", name: "The Royal Plaza", area: "MG Marg", rating: 4, pricePerNight: 6500, tags: ["Restaurant", "Central location", "Spa"] },
+      { id: "mayfair-spa", name: "Mayfair Spa Resort & Casino", area: "Ranipool", rating: 5, pricePerNight: 11000, tags: ["Spa", "Casino", "Pool", "Mountain view"] }
     ],
     transport: [
       { mode: "Flight", route: "Pakyong Airport (Delhi/Kolkata connections)", fareRange: "₹5,500–10,000", duration: "2h" },
@@ -76,26 +43,13 @@ const destinations = [
     name: "Goa",
     state: "Goa",
     region: "West",
+    image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=80",
     weather: ["Hot and sunny", "Pleasant", "Rainy / monsoon"],
     bestTime: "Nov to Feb",
     summary: "Warm sunny beaches in season and lush green escapes.",
     hotels: [
-      {
-        id: "goa-stay-1",
-        name: "Palm Grove Suites",
-        area: "Candolim",
-        rating: 4,
-        pricePerNight: 4200,
-        tags: ["Pool", "Restaurant"]
-      },
-      {
-        id: "goa-stay-2",
-        name: "Azure Bay Resort",
-        area: "Vagator",
-        rating: 5,
-        pricePerNight: 9500,
-        tags: ["Spa", "Pool", "Beach access"]
-      }
+      { id: "goa-stay-1", name: "Palm Grove Suites", area: "Candolim", rating: 4, pricePerNight: 4200, tags: ["Pool", "Restaurant"] },
+      { id: "goa-stay-2", name: "Azure Bay Resort", area: "Vagator", rating: 5, pricePerNight: 9500, tags: ["Spa", "Pool", "Beach access"] }
     ],
     transport: [
       { mode: "Flight", route: "Dabolim / Mopa Airport", fareRange: "₹3,500–8,000", duration: "1.5–2.5h" },
@@ -107,6 +61,7 @@ const destinations = [
     name: "Shimla",
     state: "Himachal Pradesh",
     region: "North",
+    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=900&q=80",
     weather: ["Cool and misty", "Cold", "Snowy"],
     bestTime: "Dec to Feb for snow, Mar to Jun for cool weather",
     summary: "Colonial hill station that stays cool in summer and gets snowfall in winter.",
@@ -127,6 +82,7 @@ const destinations = [
     name: "Leh-Ladakh",
     state: "Ladakh",
     region: "North",
+    image: "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=900&q=80",
     weather: ["Cold", "Snowy"],
     bestTime: "May to Sep for roads; Jan to Feb for snow leopard and frozen lakes",
     summary: "A high-altitude cold desert with snow-capped peaks and freezing nights almost all year.",
@@ -147,6 +103,7 @@ const destinations = [
     name: "Darjeeling",
     state: "West Bengal",
     region: "East",
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80",
     weather: ["Cool and misty", "Rainy / monsoon"],
     bestTime: "Mar to May and Oct to Nov",
     summary: "Tea-garden hills wrapped in mist, with cool air and Kanchenjunga views on clear days.",
@@ -163,10 +120,11 @@ const destinations = [
     ]
   },
   {
-    id: "shillong",
+   id: "shillong",
     name: "Shillong",
     state: "Meghalaya",
     region: "Northeast",
+    image: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=900&q=80",
     weather: ["Rainy / monsoon", "Cool and misty"],
     bestTime: "Jun to Sep for waterfalls, Oct to Apr for clear skies",
     summary: "The wettest region in India, with roaring waterfalls and living root bridges nearby.",
@@ -187,6 +145,7 @@ const destinations = [
     name: "Munnar",
     state: "Kerala",
     region: "South",
+    image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=900&q=80",
     weather: ["Cool and misty", "Rainy / monsoon", "Pleasant"],
     bestTime: "Sep to Mar",
     summary: "Rolling tea estates at 1,600 m keep the air cool, and monsoon mist makes it dreamy.",
@@ -207,6 +166,7 @@ const destinations = [
     name: "Kerala Backwaters",
     state: "Kumarakom / Alleppey",
     region: "South",
+    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=900&q=80",
     weather: ["Hot and sunny", "Rainy / monsoon", "Pleasant"],
     bestTime: "Oct to Mar; Jun to Aug for Ayurveda and monsoon",
     summary: "Warm tropical weather suits slow houseboat days, and the monsoon is Ayurveda season.",
@@ -227,6 +187,7 @@ const destinations = [
     name: "Jaipur",
     state: "Rajasthan",
     region: "West",
+    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80",
     weather: ["Pleasant", "Cool and misty"],
     bestTime: "Oct to Mar",
     summary: "Winter days are sunny and mild, ideal for forts like Amber and open-air palace tours.",
@@ -248,6 +209,7 @@ const destinations = [
     name: "Udaipur",
     state: "Rajasthan",
     region: "West",
+    image: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=900&q=80",
     weather: ["Pleasant", "Cool and misty"],
     bestTime: "Oct to Mar",
     summary: "Mild lakeside weather suits sunset boat rides on Lake Pichola and palace dining.",
@@ -268,6 +230,7 @@ const destinations = [
     name: "Andaman Islands",
     state: "Port Blair / Havelock",
     region: "East",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
     weather: ["Hot and sunny", "Pleasant"],
     bestTime: "Nov to Apr",
     summary: "Warm sea, clear water and white sand, with diving and snorkelling at their best in dry months.",
