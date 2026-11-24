@@ -4,39 +4,78 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Wayfinder India – Weather &amp; Region Trip Finder</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:wght@400;600;700;800&display=swap">
 <style>
-:root{--bg:#f3f7f6;--card:#fff;--ink:#12302f;--mut:#5a7270;--line:#d9e5e3;--pri:#0f766e;--pri2:#0b4f4a;--acc:#e8832a;--sh:0 8px 28px rgba(15,60,56,.12);
+:root{--bg:#f2f7f5;--card:#ffffff;--ink:#102e2c;--mut:#55706d;--line:#d7e5e2;--pri:#0f766e;--pri2:#0b4f4a;--acc:#e8832a;--sh:0 10px 30px rgba(15,60,56,.11);--sh-lg:0 18px 42px rgba(15,60,56,.18);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1b1a;--card:#152826;--ink:#e6f2f0;--mut:#93b0ac;--line:#25403d;--pri:#2dd4bf;--pri2:#14b8a6;--acc:#f59e4b;--sh:0 8px 28px rgba(0,0,0,.4)}}
-:root[data-theme="dark"]{--bg:#0d1b1a;--card:#152826;--ink:#e6f2f0;--mut:#93b0ac;--line:#25403d;--pri:#2dd4bf;--pri2:#14b8a6;--acc:#f59e4b;--sh:0 8px 28px rgba(0,0,0,.4)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1817;--card:#132523;--ink:#e7f3f1;--mut:#92b0ac;--line:#233d3a;--pri:#2dd4bf;--pri2:#14b8a6;--acc:#f59e4b;--sh:0 10px 30px rgba(0,0,0,.45);--sh-lg:0 18px 42px rgba(0,0,0,.6)}}
+:root[data-theme="dark"]{--bg:#0b1817;--card:#132523;--ink:#e7f3f1;--mut:#92b0ac;--line:#233d3a;--pri:#2dd4bf;--pri2:#14b8a6;--acc:#f59e4b;--sh:0 10px 30px rgba(0,0,0,.45);--sh-lg:0 18px 42px rgba(0,0,0,.6)}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito Sans",system-ui,sans-serif;line-height:1.55}
+body{margin:0;background:radial-gradient(circle at 12% 0%,color-mix(in srgb,var(--pri) 8%,transparent),transparent 42%),radial-gradient(circle at 90% 18%,color-mix(in srgb,var(--acc) 8%,transparent),transparent 38%),var(--bg);color:var(--ink);font-family:"Nunito Sans",system-ui,sans-serif;line-height:1.55}
 h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.15}
 button,select,input{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 5vw;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.logo{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:1.25rem;color:var(--pri);text-decoration:none}
+
+@media (pointer:fine) and (prefers-reduced-motion:no-preference){
+  body,a,button,select,input,summary,.card,.dchip,.m-item{cursor:none}
+  .wf-cursor-dot,.wf-cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);transition:width .2s ease,height .2s ease,background-color .2s ease,border-color .2s ease,opacity .2s ease}
+  .wf-cursor-dot{width:8px;height:8px;background:var(--acc);box-shadow:0 0 12px color-mix(in srgb,var(--acc) 70%,transparent)}
+  .wf-cursor-ring{width:34px;height:34px;border:1.8px solid color-mix(in srgb,var(--pri) 75%,transparent);background:color-mix(in srgb,var(--pri) 7%,transparent)}
+  body.wf-hover .wf-cursor-ring{width:48px;height:48px;border-color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent)}
+  body.wf-hover .wf-cursor-dot{transform:translate(-50%,-50%) scale(1.35)}
+  body.wf-down .wf-cursor-ring{width:26px;height:26px}
+}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){
+  .wf-cursor-dot,.wf-cursor-ring{display:none!important}
+}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 5vw;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:1.28rem;color:var(--pri);text-decoration:none;letter-spacing:-.02em}
 nav div{display:flex;gap:6px;flex-wrap:wrap}
-nav a{padding:8px 14px;border-radius:99px;text-decoration:none;color:var(--ink);font-weight:700;font-size:.92rem}
+nav a{padding:8px 15px;border-radius:99px;text-decoration:none;color:var(--ink);font-weight:700;font-size:.92rem;transition:.2s}
 nav a:hover,nav a.on{background:var(--pri);color:#fff}
-.hero{padding:56px 5vw 90px;background:linear-gradient(160deg,#0b4f4a,#0f766e 55%,#e8832a);color:#fff;position:relative;overflow:hidden}
-.hero h1{font-size:clamp(2rem,6vw,3.6rem);max-width:15ch;font-weight:800}
-.hero p{max-width:52ch;opacity:.92;font-size:1.05rem}
-.sun{position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,#ffd27a,#ffd27a00 70%);animation:glow 6s ease-in-out infinite alternate}
-@keyframes glow{to{transform:scale(1.25);opacity:.7}}
-.finder{margin:-56px 5vw 0;position:relative;background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:22px;display:grid;gap:18px}
-.finder label{font-weight:700;font-size:.9rem;display:block;margin-bottom:8px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1.5px solid var(--line);background:transparent;border-radius:99px;padding:8px 14px;cursor:pointer;transition:.2s}
-.chip:hover{border-color:var(--pri)}
-.chip{display:inline-flex;gap:7px;align-items:center}
+:root:not([data-theme="light"]) nav a.on{color:#04201d}
+
+.hero{padding:60px 5vw 96px;background:linear-gradient(135deg,#093f3b 0%,#0f766e 52%,#d97724 100%);color:#fff;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2.1rem,6vw,3.7rem);max-width:15ch;font-weight:800}
+.hero p{max-width:52ch;opacity:.93;font-size:1.06rem;margin-top:12px}
+.sun{position:absolute;right:-60px;top:-60px;width:270px;height:270px;border-radius:50%;background:radial-gradient(circle,#ffd27a,#ffd27a00 70%);animation:glow 6s ease-in-out infinite alternate}
+@keyframes glow{to{transform:scale(1.25);opacity:.72}}
+
+.finder{margin:-56px 5vw 0;position:relative;z-index:5;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh-lg);padding:24px;display:grid;gap:20px}
+.finder label{font-weight:800;font-size:.9rem;display:block;margin-bottom:8px;letter-spacing:.01em}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{border:1.5px solid var(--line);background:color-mix(in srgb,var(--bg) 65%,var(--card));border-radius:99px;padding:8px 15px;cursor:pointer;transition:.2s;display:inline-flex;gap:7px;align-items:center;font-weight:600}
+.chip:hover{border-color:var(--pri);transform:translateY(-1px)}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px color-mix(in srgb,var(--pri) 30%,transparent)}
+:root:not([data-theme="light"]) .chip.on{color:#05211e}
+
+.dchips{display:flex;flex-wrap:wrap;gap:10px}
+.dchip{display:inline-flex;align-items:center;gap:9px;padding:5px 14px 5px 6px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;font-size:.88rem;cursor:pointer;transition:.22s;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.dchip img{width:30px;height:30px;border-radius:50%;object-fit:cover;flex:none;border:1.5px solid color-mix(in srgb,var(--pri) 35%,transparent)}
+.dchip:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.12)}
+
+.moving-strip-wrap{margin:26px auto 0;max-width:1200px;padding:0 5vw}
+.moving-strip-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;font-size:.84rem;color:var(--mut);font-weight:700}
+.moving-strip{overflow:hidden;border-radius:20px;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 80%,transparent);box-shadow:var(--sh);padding:12px 0;position:relative}
+.moving-track{display:flex;gap:14px;width:max-content;animation:marqueeScroll 36s linear infinite}
+.moving-strip:hover .moving-track{animation-play-state:paused}
+@keyframes marqueeScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.m-item{position:relative;flex:none;width:190px;height:118px;border-radius:14px;overflow:hidden;border:0;padding:0;background:var(--card);cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.14);transition:transform .25s ease}
+.m-item:hover{transform:translateY(-4px) scale(1.02)}
+.m-item img{width:100%;height:100%;object-fit:cover;display:block}
+.m-item span{position:absolute;inset:auto 0 0 0;padding:18px 10px 7px;background:linear-gradient(to top,rgba(0,0,0,.78),transparent);color:#fff;font-size:.8rem;font-weight:800;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
 .i{width:1.2em;height:1.2em;flex:none;vertical-align:-.22em}
 .tr .ic .i{width:30px;height:30px;color:var(--pri)}
 .pic{overflow:hidden}
 .pic .sc,.pic img{position:absolute;inset:0;width:100%;height:100%}
-.pic img{object-fit:cover}
+.pic img{object-fit:cover;transition:transform .45s ease}
+.card:hover .pic img{transform:scale(1.06)}
 .pic span.t{z-index:1}
 .dhead .em{display:none}
 .hd summary{cursor:pointer;font-weight:700;color:var(--pri);list-style:none;padding:10px 0 4px;border-top:1px solid var(--line)}
@@ -46,44 +85,50 @@ nav a:hover,nav a.on{background:var(--pri);color:#fff}
 .hd dl{margin:6px 0 0;display:grid;gap:9px;animation:in .3s both}
 .hd dt{font-size:.78rem;color:var(--mut);font-weight:700}
 .hd dd{margin:0;font-size:.9rem}
-.chip.on{background:var(--pri);border-color:var(--pri);color:#fff;transform:translateY(-1px)}
-:root:not([data-theme="light"]) .chip.on{color:#05211e}
+
 select,input[type=search]{width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg)}
 .row{display:grid;gap:14px}
-.btn{background:var(--acc);color:#1b0e00;border:0;border-radius:14px;padding:13px 22px;font-weight:800;cursor:pointer;transition:.2s}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
-main{padding:34px 5vw 60px;max-width:1200px;margin:0 auto}
+.btn{background:linear-gradient(135deg,var(--acc),#f59e0b);color:#1b0e00;border:0;border-radius:14px;padding:13px 22px;font-weight:800;cursor:pointer;transition:.2s;box-shadow:0 8px 20px color-mix(in srgb,var(--acc) 32%,transparent)}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+
+main{padding:30px 5vw 60px;max-width:1200px;margin:0 auto}
 .sec{margin:8px 0 18px}.sec p{color:var(--mut);margin:4px 0 0}
-.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
-.card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:var(--sh);cursor:pointer;border:0;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .25s}
-.card:hover{transform:translateY(-6px)}
-.pic{height:170px;display:grid;place-items:center;font-size:4.2rem;position:relative}
-.pic span.t{position:absolute;left:12px;bottom:10px;background:rgba(0,0,0,.45);color:#fff;font-size:.78rem;padding:3px 10px;border-radius:99px}
-.cb{padding:16px;display:grid;gap:8px}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh);cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sh-lg);border-color:color-mix(in srgb,var(--pri) 45%,var(--line))}
+.pic{height:178px;display:grid;place-items:center;font-size:4.2rem;position:relative}
+.pic span.t{position:absolute;left:12px;bottom:10px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#fff;font-size:.78rem;padding:4px 11px;border-radius:99px;font-weight:600}
+.cb{padding:17px;display:grid;gap:8px}
 .cb h3{font-size:1.25rem}.cb small{color:var(--mut)}
 .tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:.76rem;background:color-mix(in srgb,var(--pri) 14%,transparent);color:var(--pri);padding:2px 10px;border-radius:99px;font-weight:700}
 .why{font-size:.92rem}
 .empty{padding:30px;border:2px dashed var(--line);border-radius:18px;color:var(--mut)}
-.dhead{padding:40px 5vw;color:#fff;position:relative}
+
+.dhead{padding:44px 5vw;color:#fff;position:relative;overflow:hidden}
+.dhead::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,.15));pointer-events:none}
+.dhead > *{position:relative;z-index:1}
 .dhead h1{font-size:clamp(2rem,5vw,3.2rem)}
 .dhead .em{font-size:3.4rem}
-.back{background:rgba(255,255,255,.2);color:#fff;border:0;border-radius:99px;padding:8px 16px;cursor:pointer;margin-bottom:14px;font-weight:700}
+.back{background:rgba(255,255,255,.22);backdrop-filter:blur(6px);color:#fff;border:0;border-radius:99px;padding:8px 16px;cursor:pointer;margin-bottom:14px;font-weight:700}
 .facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:0 0 26px}
-.fact{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--sh)}.fact b{display:block;color:var(--pri)}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--sh)}.fact b{display:block;color:var(--pri);margin-bottom:4px}
 .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0 16px}.bar select{width:auto}
-.hotel{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--sh);display:grid;gap:8px;animation:in .4s both}
+.hotel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--sh);display:grid;gap:8px;animation:in .4s both}
 @keyframes in{from{opacity:0;transform:translateY(10px)}}
 .price{font-family:Fraunces,Georgia,serif;font-size:1.4rem;color:var(--acc);font-weight:800}.price small{font-size:.8rem;color:var(--mut);font-family:inherit;font-weight:400}
 .star{color:#f5b301;letter-spacing:2px}
-.tr{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--sh);margin-bottom:12px;animation:in .4s both}
+.tr{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--sh);margin-bottom:12px;animation:in .4s both}
 .tr .ic{font-size:1.8rem}.tr small{color:var(--mut)}.tr .r{text-align:right}
 .note{color:var(--mut);font-size:.82rem;margin-top:30px}
-footer{text-align:center;padding:24px;color:var(--mut);font-size:.85rem}
+footer{text-align:center;padding:26px;color:var(--mut);font-size:.85rem;border-top:1px solid var(--line)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media(min-width:760px){.row{grid-template-columns:1fr 1fr auto;align-items:end}}
 </style>
 </head>
 <body>
+<div class="wf-cursor-ring" id="wfRing" aria-hidden="true"></div>
+<div class="wf-cursor-dot" id="wfDot" aria-hidden="true"></div>
+
 <nav>
   <a class="logo" href="#">Wayfinder India</a>
   <div><a href="#" id="nHome">Find trips</a><a href="#explore" id="nExp">All destinations</a></div>
@@ -99,42 +144,56 @@ const ic=p=>`<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor
 const P={cold:'<path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/>',snow:'<path d="M12 2v20M4.9 7l14.2 10M4.9 17L19.1 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/>',cool:'<path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 9a4.5 4.5 0 0 1 0 9z"/>',pleasant:'<circle cx="12" cy="12" r="3.5"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/>',hot:'<circle cx="12" cy="12" r="5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>',rainy:'<path d="M7 15a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 6a4.5 4.5 0 0 1 0 9zM8 18v3M12 18v3M16 18v3"/>',flight:'<path d="M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2l-1.4 1.4 6.4 3.3-3.1 3.1-2.7-.5-1 1 3.6 1.8 1.8 3.6 1-1-.5-2.7 3.1-3.1 3.3 6.4z"/>',train:'<rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/>',bus:'<rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16M7 21v-4M17 21v-4"/>',local:'<path d="M3 17h18v-4l-2-6H5l-2 6zM3 13h18M7 17v2M17 17v2"/>',pin:'<path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'};
 Object.keys(W).forEach(k=>W[k][0]=ic(P[k]));
 Object.keys(T).forEach(k=>T[k][0]=ic(P[k]));
-// hotel: [name, area, stars, price/night INR, amenities]; transport: [type, route, fare, duration]
+
+const IMG={
+  manali:"https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=80",
+  shimla:"https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=900&q=80",
+  leh:"https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=900&q=80",
+  darjeeling:"https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80",
+  gangtok:"https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=900&q=80",
+  shillong:"https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=900&q=80",
+  munnar:"https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=900&q=80",
+  kerala:"https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=900&q=80",
+  goa:"https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=80",
+  jaipur:"https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80",
+  udaipur:"https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=900&q=80",
+  andaman:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+};
 const D=[
-{id:"manali",n:"Manali",s:"Himachal Pradesh",r:"North",e:"🏔️",g:["#3a6ea5","#9bd1ff"],w:["cold","snow","cool"],best:"Oct to Feb for snow, Apr to Jun for mild days",why:"Snow near Solang Valley and Atal Tunnel in winter, crisp pine-scented air the rest of the year.",
+{id:"manali",n:"Manali",s:"Himachal Pradesh",r:"North",e:"🏔️",img:IMG.manali,g:["#3a6ea5","#9bd1ff"],w:["cold","snow","cool"],best:"Oct to Feb for snow, Apr to Jun for mild days",why:"Snow near Solang Valley and Atal Tunnel in winter, crisp pine-scented air the rest of the year.",
 h:[["Span Resort & Spa","Kullu Road, Beas riverside",4,9500,"Riverside,Spa,Pool,Restaurant"],["The Himalayan","Hadimba Road",5,13000,"Valley view,Spa,Fine dining,Gym"],["Snow Valley Resorts","Log Hut Area",4,5800,"Heated rooms,Restaurant,Near Mall Road"]],
 t:[["flight","Delhi to Kullu-Manali (Bhuntar), then 50 km taxi","₹5,500–9,500","1h 30m + 1h 45m"],["bus","Delhi to Manali Volvo (overnight)","₹1,300–2,200","12–14h"],["train","Delhi to Chandigarh (Shatabdi), then bus","₹900–1,600","3h + 7h"],["local","Manali to Solang Valley taxi (return)","₹800–1,500","1h each way"],["local","Chandigarh to Manali private cab","₹6,500–8,500","7–8h"]]},
-{id:"shimla",n:"Shimla",s:"Himachal Pradesh",r:"North",e:"🌲",g:["#2f6f4f","#a8e0b0"],w:["cool","cold","snow"],best:"Dec to Feb for snow, Mar to Jun for cool weather",why:"Colonial hill station that stays cool in summer and gets snowfall in winter.",
+{id:"shimla",n:"Shimla",s:"Himachal Pradesh",r:"North",e:"🌲",img:IMG.shimla,g:["#2f6f4f","#a8e0b0"],w:["cool","cold","snow"],best:"Dec to Feb for snow, Mar to Jun for cool weather",why:"Colonial hill station that stays cool in summer and gets snowfall in winter.",
 h:[["Wildflower Hall, An Oberoi Resort","Chharabra",5,24000,"Spa,Heated pool,Fine dining,Himalayan view"],["Clarkes Hotel","The Mall Road",4,6500,"Heritage property,Restaurant,Central location"],["Hotel Willow Banks","The Mall Road",4,7500,"Restaurant,Bar,Mall Road access"]],
 t:[["flight","Delhi to Shimla (Jubbarhatti)","₹4,500–8,000","1h 10m"],["train","Kalka to Shimla toy train","₹300–1,000","5h 30m"],["bus","Delhi to Shimla Volvo","₹1,000–1,800","8–10h"],["local","Shimla local cab (full day)","₹2,000–3,000","8h"]]},
-{id:"leh",n:"Leh-Ladakh",s:"Ladakh",r:"North",e:"🏜️",g:["#7a5a3a","#f1c27d"],w:["cold","snow"],best:"May to Sep for roads; Jan to Feb for snow leopard and frozen lakes",why:"A high-altitude cold desert with snow-capped peaks and freezing nights almost all year.",
+{id:"leh",n:"Leh-Ladakh",s:"Ladakh",r:"North",e:"🏜️",img:IMG.leh,g:["#7a5a3a","#f1c27d"],w:["cold","snow"],best:"May to Sep for roads; Jan to Feb for snow leopard and frozen lakes",why:"A high-altitude cold desert with snow-capped peaks and freezing nights almost all year.",
 h:[["The Grand Dragon Ladakh","Sheynam Road, Leh",5,12000,"Spa,Restaurant,Mountain view,Heating"],["Stok Palace Heritage Hotel","Stok Village",4,10000,"Royal heritage,Garden,Restaurant"],["Hotel Lharimo","Changspa Road",3,5000,"Garden,Restaurant,Near Leh market"]],
 t:[["flight","Delhi to Leh (Kushok Bakula Rimpochee)","₹5,500–12,000","1h 25m"],["bus","Manali to Leh (summer only)","₹2,000–3,500","16–20h"],["local","Leh to Pangong Lake shared taxi","₹1,500–2,500","5h"],["local","Leh local sightseeing cab","₹2,500–4,000","Full day"]]},
-{id:"darjeeling",n:"Darjeeling",s:"West Bengal",r:"East",e:"🍵",g:["#4d7c5a","#d5e8c0"],w:["cool","rainy"],best:"Mar to May and Oct to Nov",why:"Tea-garden hills wrapped in mist, with cool air and Kanchenjunga views on clear days.",
+{id:"darjeeling",n:"Darjeeling",s:"West Bengal",r:"East",e:"🍵",img:IMG.darjeeling,g:["#4d7c5a","#d5e8c0"],w:["cool","rainy"],best:"Mar to May and Oct to Nov",why:"Tea-garden hills wrapped in mist, with cool air and Kanchenjunga views on clear days.",
 h:[["Mayfair Hill Resort","Mayfair, Mount Pleasant",5,9000,"Colonial style,Spa,Garden,Restaurant"],["Windamere Hotel","Observatory Hill",4,14000,"Heritage,Afternoon tea,Garden"],["Hotel Dekeling","Hooker Road",3,4500,"Restaurant,Mountain view"]],
 t:[["flight","Kolkata to Bagdogra, then 3h taxi","₹3,500–7,000","1h 20m + 3h"],["train","Kolkata to New Jalpaiguri (Darjeeling Mail)","₹500–1,800","10–11h"],["train","NJP to Darjeeling toy train (joy ride)","₹1,500","7h"],["local","Bagdogra to Darjeeling shared jeep","₹400–600","3–3h 30m"]]},
-{id:"gangtok",n:"Gangtok",s:"Sikkim",r:"Northeast",e:"⛩️",g:["#5b5ea6","#c9c6ff"],w:["cool","cold","snow"],best:"Mar to May and Oct to Dec",why:"Cool all year, with snow at Tsomgo Lake and Nathula Pass close by.",
+{id:"gangtok",n:"Gangtok",s:"Sikkim",r:"Northeast",e:"⛩️",img:IMG.gangtok,g:["#5b5ea6","#c9c6ff"],w:["cool","cold","snow"],best:"Mar to May and Oct to Dec",why:"Cool all year, with snow at Tsomgo Lake and Nathula Pass close by.",
 h:[["Mayfair Spa Resort & Casino","Ranipool",5,11000,"Spa,Casino,Pool,Mountain view"],["The Royal Plaza","MG Marg",4,6500,"Restaurant,Central location,Spa"],["Hotel Tibet","Paljor Stadium Road",3,4000,"Restaurant,Mountain view"]],
 t:[["flight","Pakyong Airport (Delhi/Kolkata connections)","₹5,500–10,000","2h"],["train","Delhi/Kolkata to NJP, then taxi","₹700–2,500","10–24h + 4h"],["bus","Siliguri to Gangtok shared jeep","₹350–500","4–5h"],["local","Gangtok to Tsomgo Lake taxi","₹3,000–4,000","2h each way"]]},
-{id:"shillong",n:"Shillong",s:"Meghalaya",r:"Northeast",e:"🌧️",g:["#2b6777","#9ad5de"],w:["rainy","cool"],best:"Jun to Sep for waterfalls, Oct to Apr for clear skies",why:"The wettest region in India, with roaring waterfalls and living root bridges nearby.",
+{id:"shillong",n:"Shillong",s:"Meghalaya",r:"Northeast",e:"🌧️",img:IMG.shillong,g:["#2b6777","#9ad5de"],w:["rainy","cool"],best:"Jun to Sep for waterfalls, Oct to Apr for clear skies",why:"The wettest region in India, with roaring waterfalls and living root bridges nearby.",
 h:[["Ri Kynjai","Umiam Lake",4,12000,"Lake view,Spa,Restaurant"],["Hotel Polo Towers","Polo Grounds",4,5500,"Restaurant,Bar,Central location"],["Tripura Castle","Cleve Colony",3,5000,"Heritage,Garden,Restaurant"]],
 t:[["flight","Guwahati to Shillong Airport (Umroi)","₹3,500–6,000","40m"],["bus","Guwahati to Shillong shared cab","₹400–600","3h"],["train","Delhi/Kolkata to Guwahati","₹800–3,000","20–30h"],["local","Shillong to Cherrapunji cab","₹2,500–3,500","2h each way"]]},
-{id:"munnar",n:"Munnar",s:"Kerala",r:"South",e:"🍃",g:["#2e7d4f","#b8e6a1"],w:["cool","rainy","pleasant"],best:"Sep to Mar",why:"Rolling tea estates at 1,600 m keep the air cool, and monsoon mist makes it dreamy.",
-h:[["Windermere Estate","Pothamedu",5,16000,"Plantation views,Spa,Restaurant,Bonfire"],["Blanket Hotel & Spa","Anachal",4,8500,"Spa,Pool,Valley view"],["Tea County (KTDC)","Munnar town",4,6500,"Tea estate,Restaurant,Garden"]],
+{id:"munnar",n:"Munnar",s:"Kerala",r:"South",e:"🍃",img:IMG.munnar,g:["#2e7d4f","#b8e6a1"],w:["cool","rainy","pleasant"],best:"Sep to Mar",why:"Rolling tea estates at 1,600 m keep the air cool, and monsoon mist makes it dreamy.",
+h:[["Windermere Estate","Pothamedu",5,16000,"Plantation views,Spa,Restaurant,Bonfire"],["Blanket Hotel & Spa",["Blanket Hotel & Spa","Anachal",4,8500,"Spa,Pool,Valley view"],["Tea County (KTDC)","Munnar town",4,6500,"Tea estate,Restaurant,Garden"]]],
 t:[["flight","Kochi airport, then 4h taxi","₹4,000–8,000 (flight)","1–2h + 4h"],["bus","Ernakulam to Munnar KSRTC","₹150–300","4–5h"],["train","Chennai to Aluva/Ernakulam, then bus","₹500–1,800","11–12h + 4h"],["local","Munnar local sightseeing cab","₹2,500–3,500","Full day"]]},
-{id:"kerala",n:"Kerala Backwaters",s:"Kumarakom / Alleppey",r:"South",e:"🛶",g:["#0e7c86","#8fe3d3"],w:["hot","rainy","pleasant"],best:"Oct to Mar; Jun to Aug for Ayurveda and monsoon",why:"Warm tropical weather suits slow houseboat days, and the monsoon is Ayurveda season.",
+{id:"kerala",n:"Kerala Backwaters",s:"Kumarakom / Alleppey",r:"South",e:"🛶",img:IMG.kerala,g:["#0e7c86","#8fe3d3"],w:["hot","rainy","pleasant"],best:"Oct to Mar; Jun to Aug for Ayurveda and monsoon",why:"Warm tropical weather suits slow houseboat days, and the monsoon is Ayurveda season.",
 h:[["Taj Kumarakom Resort & Spa","Kumarakom",5,18000,"Lake view,Spa,Pool,Ayurveda"],["Coconut Lagoon (CGH Earth)","Kumarakom",5,16000,"Heritage villas,Boat access,Ayurveda"],["Punnamada Resort","Alleppey",4,9000,"Lakeside,Pool,Houseboat access"]],
 t:[["flight","Kochi airport, then 1.5h taxi","₹4,000–8,000 (flight)","2h + 1h 30m"],["train","Delhi/Mumbai to Kottayam or Alappuzha","₹1,200–3,500","24–40h"],["bus","Ernakulam to Alleppey KSRTC","₹100–200","1h 30m–2h"],["local","Alleppey houseboat (1BR overnight)","₹8,000–15,000","22h"]]},
-{id:"goa",n:"Goa",s:"Goa",r:"West",e:"🏖️",g:["#e8832a","#ffd98a"],w:["hot","pleasant","rainy"],best:"Nov to Feb for beaches, Jun to Sep for green monsoon calm",why:"Warm sunny beaches in season and lush waterfalls and cheaper stays during the monsoon.",
+{id:"goa",n:"Goa",s:"Goa",r:"West",e:"🏖️",img:IMG.goa,g:["#e8832a","#ffd98a"],w:["hot","pleasant","rainy"],best:"Nov to Feb for beaches, Jun to Sep for green monsoon calm",why:"Warm sunny beaches in season and lush waterfalls and cheaper stays during the monsoon.",
 h:[["Taj Fort Aguada Resort & Spa","Sinquerim",5,22000,"Beach,Spa,Pool,Fine dining"],["W Goa","Vagator",5,26000,"Beach view,Pool,Nightlife,Spa"],["Alila Diwa Goa","Majorda",5,15000,"Paddy views,Spa,Pool"]],
 t:[["flight","Mumbai or Bengaluru to Goa (Mopa / Dabolim)","₹3,000–6,500","1h 10m"],["train","Mumbai to Madgaon (Konkan Railway)","₹600–2,200","10–12h"],["bus","Mumbai to Panaji sleeper","₹900–1,800","11–13h"],["local","Airport to north Goa beaches by taxi","₹1,000–1,800","45m–1h 15m"],["local","Scooter hire (per day)","₹400–600","Self-drive"]]},
-{id:"jaipur",n:"Jaipur",s:"Rajasthan",r:"West",e:"🏰",g:["#c2410c","#fdba74"],w:["pleasant","cool"],best:"Oct to Mar",why:"Winter days are sunny and mild, ideal for forts like Amber and open-air palace tours.",
+{id:"jaipur",n:"Jaipur",s:"Rajasthan",r:"West",e:"🏰",img:IMG.jaipur,g:["#c2410c","#fdba74"],w:["pleasant","cool"],best:"Oct to Mar",why:"Winter days are sunny and mild, ideal for forts like Amber and open-air palace tours.",
 h:[["Rambagh Palace (Taj)","Bhawani Singh Road",5,35000,"Palace stay,Spa,Pool,Fine dining"],["Taj Jai Mahal Palace","Jacob Road, Civil Lines",5,14000,"Heritage,Pool,Gardens"],["Samode Haveli","Gangapole",4,9500,"Haveli,Pool,Restaurant"]],
 t:[["flight","Delhi/Mumbai to Jaipur","₹3,000–6,500","1h – 1h 40m"],["train","Delhi to Jaipur (Shatabdi / Vande Bharat)","₹600–1,800","4h 30m"],["bus","Delhi to Jaipur RSRTC Volvo","₹500–900","5–6h"],["local","Jaipur full-day cab with fort visits","₹2,000–3,000","8h"],["local","Auto-rickshaw (per ride)","₹100–300","15–30m"]]},
-{id:"udaipur",n:"Udaipur",s:"Rajasthan",r:"West",e:"🏯",g:["#9d174d","#f9a8d4"],w:["pleasant","cool"],best:"Oct to Mar",why:"Mild lakeside weather suits sunset boat rides on Lake Pichola and palace dining.",
+{id:"udaipur",n:"Udaipur",s:"Rajasthan",r:"West",e:"🏯",img:IMG.udaipur,g:["#9d174d","#f9a8d4"],w:["pleasant","cool"],best:"Oct to Mar",why:"Mild lakeside weather suits sunset boat rides on Lake Pichola and palace dining.",
 h:[["Taj Lake Palace","Lake Pichola",5,45000,"Palace on the lake,Spa,Fine dining"],["The Oberoi Udaivilas","Haridasji Ki Magri",5,40000,"Private pools,Spa,Lake view"],["The Leela Palace Udaipur","Lake Pichola shore",5,28000,"Lake view,Spa,Pool"]],
 t:[["flight","Delhi/Mumbai to Udaipur (Dabok)","₹3,500–7,000","1h 20m–1h 40m"],["train","Delhi to Udaipur City (Mewar Express)","₹500–1,800","12h"],["bus","Jaipur to Udaipur Volvo","₹700–1,200","7–8h"],["local","Udaipur auto/e-rickshaw ride","₹80–250","10–25m"]]},
-{id:"andaman",n:"Andaman Islands",s:"Port Blair / Havelock",r:"East",e:"🏝️",g:["#0369a1","#67e8f9"],w:["hot","pleasant"],best:"Nov to Apr",why:"Warm sea, clear water and white sand, with diving and snorkelling at their best in dry months.",
+{id:"andaman",n:"Andaman Islands",s:"Port Blair / Havelock",r:"East",e:"🏝️",img:IMG.andaman,g:["#0369a1","#67e8f9"],w:["hot","pleasant"],best:"Nov to Apr",why:"Warm sea, clear water and white sand, with diving and snorkelling at their best in dry months.",
 h:[["Taj Exotica Resort & Spa","Radhanagar Beach, Havelock",5,32000,"Private beach,Spa,Diving,Fine dining"],["SeaShell Port Blair","Marine Hill, Port Blair",4,8500,"Pool,Restaurant,Near airport"],["Barefoot at Havelock","Govind Nagar Beach",4,17000,"Beachfront,Dive centre,Spa"]],
 t:[["flight","Chennai/Kolkata/Delhi to Port Blair","₹6,000–13,000","2h – 3h 30m"],["local","Port Blair to Havelock Makruzz ferry","₹1,300–1,900","1h 30m"],["local","Havelock scooter or auto hire","₹500–1,000 per day","Self-drive"],["local","Port Blair airport to hotel taxi","₹300–600","15–25m"]]}
 ];
@@ -146,7 +205,7 @@ const HD={
 'Clarkes Hotel':['Historic hotel on the Mall','First-time visitors who like to walk','Standard and deluxe rooms','Restaurant, bar','The Ridge, Christ Church, Scandal Point'],
 'Hotel Willow Banks':['Colonial-style hotel near the Mall','Families','Deluxe rooms','Restaurant, bar','The Ridge, Mall Road, Scandal Point'],
 'The Grand Dragon Ladakh':['Large luxury hotel in Leh','Comfortable high-altitude stays','Deluxe rooms and suites','Restaurant, bar','Leh Palace, Shanti Stupa, Leh market'],
-'Stok Palace Heritage Hotel':['Heritage stay in a royal palace','Culture lovers','Heritage rooms','Restaurant','Stok Palace Museum, Thiksey Monastery, Stok village'],
+'Stok Palace Heritage Hotel':['Heritage stay in a royal palace','Culture lovers','Heritage rooms','Restaurant','Stok Palace Museum,  Monastery, Stok village'],
 'Hotel Lharimo':['Boutique hotel in Changspa','Backpackers and couples','Standard and deluxe rooms','Restaurant','Changspa, Leh market, Shanti Stupa'],
 'Mayfair Hill Resort':['Colonial-style hill resort','Couples and families','Deluxe rooms and suites','Restaurant, bar','Mall, Tiger Hill, Batasia Loop'],
 'Windamere Hotel':['Historic hotel on Observatory Hill','Heritage seekers','Heritage rooms and suites','Dining room, afternoon tea','Observatory Hill, Chowrasta, Mahakal Temple'],
@@ -185,43 +244,37 @@ const g=d=>`linear-gradient(135deg,${d.g[0]},${d.g[1]})`;
 const K={manali:"m",shimla:"m",leh:"m",gangtok:"m",darjeeling:"h",shillong:"h",munnar:"h",kerala:"w",goa:"w",andaman:"w",jaipur:"p",udaipur:"p"};
 const SC={m:'<polygon points="0,170 70,70 120,120 180,40 300,170" fill="rgba(255,255,255,.3)"/><polygon points="100,170 190,90 240,130 300,80 300,170" fill="rgba(255,255,255,.28)"/><polygon points="170,40 180,40 190,56 180,52 172,58" fill="#fff"/>',h:'<path d="M0 120Q75 70 150 115T300 95V170H0z" fill="rgba(255,255,255,.28)"/><path d="M0 145Q90 100 170 140T300 125V170H0z" fill="rgba(0,60,40,.25)"/>',w:'<circle cx="225" cy="58" r="24" fill="rgba(255,255,255,.65)"/><path d="M0 120Q40 108 75 120T150 120T225 120T300 120V170H0z" fill="rgba(255,255,255,.28)"/><path d="M0 145Q40 133 75 145T150 145T225 145T300 145V170H0z" fill="rgba(255,255,255,.3)"/>',p:'<path d="M50 170V110h200v60z" fill="rgba(255,255,255,.3)"/><path d="M120 110a30 30 0 0 1 60 0z" fill="rgba(255,255,255,.4)"/><rect x="148" y="68" width="4" height="14" fill="rgba(255,255,255,.6)"/><path d="M70 110V92h24v18zM206 110V92h24v18z" fill="rgba(255,255,255,.4)"/>'};
 const scene=d=>`<svg class="sc" viewBox="0 0 300 170" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${SC[K[d.id]]||""}</svg>`;
-function card(d,showW){return `<button class="card" onclick="location.hash='${d.id}'" aria-label="Open ${d.n}"><div class="pic" style="background:${g(d)}">${scene(d)}${d.img?`<img src="${d.img}" alt="${d.n}" loading="lazy" onerror="this.remove()">`:""}<span class="t">${d.s}</span></div><div class="cb"><h3>${d.n}</h3><div class="tags">${d.w.map(k=>`<span class="tag">${W[k][0]} ${W[k][1]}</span>`).join("")}</div><div class="why">${showW&&W[showW]?`<b>Why ${W[showW][1].toLowerCase()}?</b> `:""}${d.why}</div><small>From ${inr(Math.min(...d.h.map(x=>x[3])))} per night · ${d.r}</small></div></button>`}
+function card(d,showW){
+  const imgSrc=d.img||IMG[d.id]||"";
+  return `<button class="card" onclick="location.hash='${d.id}'" aria-label="Open ${d.n}"><div class="pic" style="background:${g(d)}">${scene(d)}${imgSrc?`<img src="${imgSrc}" alt="${d.n}" loading="lazy" onerror="this.remove()">`:""}<span class="t">${d.s}</span></div><div class="cb"><h3>${d.n}</h3><div class="tags">${d.w.map(k=>`<span class="tag">${W[k][0]} ${W[k][1]}</span>`).join("")}</div><div class="why">${showW&&W[showW]?`<b>Why ${W[showW][1].toLowerCase()}?</b> `:""}${d.why}</div><small>From ${inr(Math.min(...d.h.map(x=>x[3])))} per night · ${d.r}</small></div></button>`;
+}
+
+function destinationChipsHtml(){
+  return `<div class="dchips" id="dc">${D.map(d=>{
+    const imgSrc=d.img||IMG[d.id]||"";
+    return `<button type="button" class="dchip" onclick="location.hash='${d.id}'" title="Explore ${d.n}, ${d.s}"><img src="${imgSrc}" alt="${d.n}" loading="lazy" onerror="this.style.display='none'"><span>${d.n}</span></button>`;
+  }).join("")}</div>`;
+}
+
+function movingGalleryHtml(){
+  const items=[...D,...D].map(d=>{
+    const imgSrc=d.img||IMG[d.id]||"";
+    return `<button type="button" class="m-item" onclick="location.hash='${d.id}'" aria-label="Open ${d.n}"><img src="${imgSrc}" alt="${d.n}" loading="lazy" onerror="this.closest('.m-item').style.background='${g(d)}'"><span class="t">${d.n} · ${d.s}</span></button>`;
+  }).join("");
+  return `<div class="moving-strip-wrap" aria-label="All destinations moving gallery"><div class="moving-strip-head"><span>All destinations live view</span><span>Hover to pause · Click any place</span></div><div class="moving-strip"><div class="moving-track">${items}</div></div></div>`;
+}
+
 function home(){
  app.innerHTML=`<header class="hero"><div class="sun"></div><h1>Pick the weather. We’ll pick the place.</h1><p>Tell us how you want the weather to feel and where in India you’d like to go. You’ll get real hotels and fares with every match.</p></header>
  <section class="finder"><div><label>What weather do you want?</label><div class="chips" id="wc">${Object.entries(W).map(([k,v])=>`<button class="chip ${sel.w==k?"on":""}" data-k="${k}">${v[0]} ${v[1]}</button>`).join("")}</div></div>
+ <div><label>Quick jump by destination</label>${destinationChipsHtml()}</div>
  <div class="row"><div><label for="rg">Preferred region</label><select id="rg"><option value="">Anywhere in India</option>${R.map(x=>`<option ${sel.r==x?"selected":""}>${x}</option>`).join("")}</select></div><div><label for="q">Or search a place</label><input id="q" type="search" placeholder="e.g. Goa, Manali"></div><button class="btn" id="go">Find destinations</button></div></section>
+ ${movingGalleryHtml()}
  <main><div id="res"></div></main>`;
  document.querySelectorAll("#wc .chip").forEach(b=>b.onclick=()=>{sel.w=sel.w==b.dataset.k?"":b.dataset.k;document.querySelectorAll("#wc .chip").forEach(c=>c.classList.toggle("on",c.dataset.k==sel.w));run()});
  $("#rg").onchange=e=>{sel.r=e.target.value;run()};$("#go").onclick=run;$("#q").oninput=run;run();
 }
-function run(){
- const q=($("#q")||{value:""}).value.trim().toLowerCase();
- let l=D.filter(d=>(!sel.w||d.w.includes(sel.w))&&(!sel.r||d.r==sel.r)&&(!q||(d.n+d.s).toLowerCase().includes(q)));
- let h=`<div class="sec"><h2>${sel.w||sel.r||q?l.length+" matching destination"+(l.length==1?"":"s"):"Popular destinations"}</h2><p>${sel.w?W[sel.w][1]+" weather":""}${sel.w&&sel.r?" · ":""}${sel.r?sel.r+" India":""}</p></div>`;
- if(!l.length){const alt=D.filter(d=>!sel.w||d.w.includes(sel.w));h+=`<div class="empty">No ${sel.w?W[sel.w][1].toLowerCase()+" ":""}destination in ${sel.r||"that search"}. Try another region, or see these ${sel.w?W[sel.w][1].toLowerCase()+" ":""}options elsewhere.</div><div class="grid" style="margin-top:20px">${alt.map(d=>card(d,sel.w)).join("")}</div>`}
- else h+=`<div class="grid">${l.map(d=>card(d,sel.w)).join("")}</div>`;
- $("#res").innerHTML=h;
-}
-function explore(){app.innerHTML=`<main><div class="sec"><h2>All destinations</h2><p>${D.length} places across India.</p></div><div class="grid">${D.map(d=>card(d)).join("")}</div></main>`}
-function detail(d){
- app.innerHTML=`<header class="dhead" style="background:${g(d)}"><button class="back" onclick="history.length>1?history.back():location.hash=''">← Back</button><div class="em">${d.e}</div><h1>${d.n}</h1><p>${d.s} · ${d.r} India</p></header>
- <main><div class="facts"><div class="fact"><b>Best time</b>${d.best}</div><div class="fact"><b>Weather</b>${d.w.map(k=>W[k][0]+" "+W[k][1]).join(", ")}</div><div class="fact"><b>Why it fits</b>${d.why}</div></div>
- <div class="sec"><h2>Where to stay</h2><p>Real, well-known hotels with approximate nightly rates.</p></div>
- <div class="bar"><select id="hs" aria-label="Sort hotels"><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="star">Rating: high to low</option></select><select id="hf" aria-label="Minimum stars"><option value="0">All ratings</option><option value="4">4★ and above</option><option value="5">5★ only</option></select></div>
- <div class="grid" id="hl"></div>
- <div class="sec" style="margin-top:40px"><h2>Getting there and around</h2><p>Fares are typical one-way estimates from a major city.</p></div>
- <div class="chips bar" id="tfc"></div><div id="tl"></div>
- <p class="note">All prices are estimates in INR for planning only. Rates vary by season, room type and booking date.</p></main>`;
- $("#hs").value=hs;$("#hf").value=hst;
- const hot=()=>{hs=$("#hs").value;hst=+$("#hf").value;let l=d.h.filter(x=>x[2]>=hst);l.sort((a,b)=>hs=="low"?a[3]-b[3]:hs=="high"?b[3]-a[3]:b[2]-a[2]);
-  $("#hl").innerHTML=l.length?l.map((x,i)=>`<div class="hotel" style="animation-delay:${i*70}ms"><h3>${x[0]}</h3><small>${ic(P.pin)} ${x[1]}</small><div class="star" aria-label="${x[2]} stars">${"★".repeat(x[2])}${"☆".repeat(5-x[2])}</div><div class="tags">${x[4].split(",").map(a=>`<span class="tag">${a}</span>`).join("")}</div><div class="price">${inr(x[3])} <small>per night, approx.</small></div>${hd(x)}</div>`).join(""):`<div class="empty">No hotels at that rating. Choose “All ratings”.</div>`};
- $("#hs").onchange=hot;$("#hf").onchange=hot;hot();
- const tr=()=>{$("#tfc").innerHTML=[["all","All"],...Object.entries(T).map(([k,v])=>[k,v[0]+" "+v[1]])].map(([k,v])=>`<button class="chip ${tf==k?"on":""}" data-k="${k}">${v}</button>`).join("");
-  document.querySelectorAll("#tfc .chip").forEach(b=>b.onclick=()=>{tf=b.dataset.k;tr()});
-  const l=d.t.filter(x=>tf=="all"||x[0]==tf);
-  $("#tl").innerHTML=l.length?l.map((x,i)=>`<div class="tr" style="animation-delay:${i*60}ms"><div class="ic">${T[x[0]][0]}</div><div><b>${T[x[0]][1]}</b><br><small>${x[1]}</small></div><div class="r"><b>${x[2].includes("₹")?x[2]:"₹"+x[2]}</b><br><small>${ic(P.clock)} ${x[3]}</small></div></div>`).join(""):`<div class="empty">No ${T[tf][1].toLowerCase()} option listed for ${d.n}. Try another transport type.</div>`};
- tr();
-}
+
 function normalizeDest(item, fallback) {
   const f = fallback || {};
   const weatherKeys = Object.keys(W);
@@ -261,6 +314,7 @@ function normalizeDest(item, fallback) {
     s: item.state || f.s || "",
     r: item.region || f.r || "North",
     e: f.e || "📍",
+    img: item.image || f.img || IMG[item.id] || "",
     g: f.g || ["#0f766e", "#67e8f9"],
     w: wList,
     best: item.bestTime || f.best || "",
@@ -282,7 +336,6 @@ async function fetchDestinations({ weather = "", region = "", search = "" } = {}
   const list = await res.json();
   return list.map(item => normalizeDest(item, D.find(x => x.id === item.id)));
 }
-
 async function fetchDestinationById(id, { minRating = "", sortPrice = "", mode = "" } = {}) {
   const params = new URLSearchParams();
   if (minRating) params.set("minRating", minRating);
@@ -327,7 +380,7 @@ async function explore() {
   } catch {
     list = D;
   }
-  app.innerHTML = `<main><div class="sec"><h2>All destinations</h2><p>${list.length} places across India.</p></div><div class="grid">${list.map(d => card(d)).join("")}</div></main>`;
+  app.innerHTML = `${movingGalleryHtml()}<main><div class="sec"><h2>All destinations</h2><p>${list.length} places across India.</p></div><div class="grid">${list.map(d => card(d)).join("")}</div></main>`;
 }
 
 async function detail(d) {
@@ -335,8 +388,9 @@ async function detail(d) {
   try {
     item = await fetchDestinationById(d.id);
   } catch {}
+  const heroBg = item.img ? `linear-gradient(120deg,rgba(9,63,59,.78),rgba(15,118,110,.62)),url('${item.img}') center/cover no-repeat` : g(item);
 
-  app.innerHTML = `<header class="dhead" style="background:${g(item)}"><button class="back" onclick="history.length>1?history.back():location.hash=''">← Back</button><div class="em">${item.e}</div><h1>${item.n}</h1><p>${item.s} · ${item.r} India</p></header>
+  app.innerHTML = `<header class="dhead" style="background:${heroBg}"><button class="back" onclick="history.length>1?history.back():location.hash=''">← Back</button><div class="em">${item.e}</div><h1>${item.n}</h1><p>${item.s} · ${item.r} India</p></header>
   <main><div class="facts"><div class="fact"><b>Best time</b>${item.best}</div><div class="fact"><b>Weather</b>${item.w.map(k => W[k][0] + " " + W[k][1]).join(", ")}</div><div class="fact"><b>Why it fits</b>${item.why}</div></div>
   <div class="sec"><h2>Where to stay</h2><p>Real, well-known hotels with approximate nightly rates.</p></div>
   <div class="bar"><select id="hs" aria-label="Sort hotels"><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="star">Rating: high to low</option></select><select id="hf" aria-label="Minimum stars"><option value="0">All ratings</option><option value="4">4★ and above</option><option value="5">5★ only</option></select></div>
@@ -392,10 +446,36 @@ function route() {
   $("#nHome").classList.toggle("on", !h);
   $("#nExp").classList.toggle("on", h == "explore");
   window.scrollTo(0, 0);
-  if (d || h) detail(d || { id: h, n: h, s: "", r: "", e: "📍", g: ["#0f766e", "#67e8f9"], w: ["pleasant"], best: "", why: "", h: [], t: [] });
+  if (d || h) detail(d || { id: h, n: h, s: "", r: "", e: "📍", img: IMG[h] || "", g: ["#0f766e", "#67e8f9"], w: ["pleasant"], best: "", why: "", h: [], t: [] });
   else if (h == "explore") explore();
   else home();
 }
+
+(function initCustomCursor(){
+  const dot=$("#wfDot"),ring=$("#wfRing");
+  if(!dot||!ring)return;
+  let mx=-100,my=-100,rx=-100,ry=-100,active=false;
+  const move=e=>{
+    mx=e.clientX;my=e.clientY;
+    if(!active){rx=mx;ry=my;active=true;}
+    dot.style.left=mx+"px";dot.style.top=my+"px";
+  };
+  const tick=()=>{
+    rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
+    ring.style.left=rx+"px";ring.style.top=ry+"px";
+    requestAnimationFrame(tick);
+  };
+  document.addEventListener("mousemove",move,{passive:true});
+  document.addEventListener("mouseover",e=>{
+    document.body.classList.toggle("wf-hover",!!e.target.closest("a,button,select,input,summary,.card,.dchip,.m-item"));
+  },{passive:true});
+  document.addEventListener("mousedown",()=>document.body.classList.add("wf-down"),{passive:true});
+  document.addEventListener("mouseup",()=>document.body.classList.remove("wf-down"),{passive:true});
+  document.addEventListener("mouseleave",()=>{dot.style.opacity="0";ring.style.opacity="0";},{passive:true});
+  document.addEventListener("mouseenter",()=>{dot.style.opacity="1";ring.style.opacity="1";},{passive:true});
+  requestAnimationFrame(tick);
+})();
+
 addEventListener("hashchange", route);
 route();
 </script>
